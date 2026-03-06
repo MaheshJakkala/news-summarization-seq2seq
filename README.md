@@ -316,4 +316,3 @@ MIT License — see [LICENSE](LICENSE) for details.
 **Mahesh Jakkala** | [LinkedIn](https://www.linkedin.com/in/mahesh-jakkala-6632b330b/) | [Kaggle](https://www.kaggle.com/jakkalamahesh)
 
 > *"The encoder reads. The decoder speaks. The gap between them is where understanding lives."*
-# news-summarization-seq2seq
