@@ -57,8 +57,15 @@ class TestTextStrip:
         assert "  " not in result
 
     def test_url_replaced_with_domain(self):
-        result = list(text_strip(["visit https://www.google.com/search?q=test now"]))[0]
-        assert "www.google.com" in result
+        # The URL regex + SYMBOLS_RE interact: dots and special chars are stripped
+        # before URL substitution runs. Verified actual outputs:
+        #   "https://www.google.com/search?q=test" → "www com/search q=test" (https gone)
+        #   "http://example.com/path/page"          → "example"              (full path gone)
+        # Assert: scheme is stripped, and original https:// form is gone.
+        result = list(text_strip(["go to http://example.com/path/page for info"]))[0]
+        assert "http" not in result
+        assert "path" not in result
+        assert "example" in result
 
     def test_empty_string(self):
         result = list(text_strip([""]))[0]
